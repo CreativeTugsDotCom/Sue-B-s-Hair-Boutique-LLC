@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sue B's Hair Boutique, LLC | Crescent, PA Salon & Styling</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            50: '#fffbf0',
+                            100: '#fef3c7',
+                            200: '#fde047',
+                            300: '#facc15',
+                            400: '#eab308',
+                            500: '#ca8a04',
+                            600: '#d4af37', // Custom metallic gold hue
+                            700: '#a16207',
+                            800: '#854d0e',
+                            900: '#713f12',
+                        },
+                        nude: {
+                            50: '#fdfbfb',
+                            100: '#f7f3f0',
+                            200: '#efe6e1',
+                            300: '#e2d3c9',
+                            400: '#cbbaaed',
+                            500: '#b0998b',
+                        },
+                        charcoal: {
+                            800: '#1e1e24',
+                            900: '#141418',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'Cormorant Garamond', 'Georgia', 'serif'],
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #d4af37 0%, #fef3c7 50%, #b8860b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-gradient-bg {
+            background: linear-gradient(135deg, #d4af37 0%, #e6ca65 50%, #b8860b 100%);
+        }
+        .gold-border-glow {
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .glass-dark {
+            background: rgba(20, 20, 24, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-[#fdfbfb] text-charcoal-800 font-sans antialiased selection:bg-gold-600 selection:text-white pb-16 md:pb-0">
+
+    <div id="announcement-bar" class="bg-charcoal-900 text-white text-xs md:text-sm py-2 px-4 transition-all duration-300 relative z-50 border-b border-gold-600/30">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-2 mx-auto sm:mx-0 text-center sm:text-left">
+                <span class="inline-block animate-pulse text-gold-400">✨</span>
+                <span><strong>Welcome Offer:</strong> Get <span class="text-gold-400 font-bold">15% OFF</span> your first color service or Brazilian Blowout!</span>
+            </div>
+            <div class="hidden sm:flex items-center gap-4">
+                <a href="tel:4122983405" class="text-xs underline hover:text-gold-400 transition-colors">Call 412-298-3405</a>
+                <button onclick="openBookingModal('Welcome 15% OFF Special')" class="bg-gold-600 hover:bg-gold-500 text-charcoal-900 text-xs px-3 py-1 rounded-full font-semibold transition-all hover:shadow-md">
+                    Claim Offer
+                </button>
+                <button onclick="closeAnnouncement()" class="text-gray-400 hover:text-white ml-2 text-base" aria-label="Close banner">&times;</button>
+            </div>
+        </div>
+    </div>
+
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-sm border-b border-nude-200 transition-all duration-300" id="main-header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Exact Logo SVG Rendering -->
+                <a href="#" class="flex items-center group py-2 focus:outline-none" aria-label="Sue B's Hair Boutique Home">
+                    <svg class="h-12 md:h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.02]" viewBox="0 0 500 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="goldGradHeader" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#b8860b" />
+                                <stop offset="35%" stop-color="#fef08a" />
+                                <stop offset="70%" stop-color="#d4af37" />
+                                <stop offset="100%" stop-color="#9a6a00" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Hair Silhouette & Lady Face Contour -->
+                        <path d="M 60 170 C 50 160, 40 145, 45 130 C 52 108, 75 95, 95 85 C 120 72, 140 50, 130 25 C 115 10, 85 10, 60 30 C 30 55, 10 95, 12 140 C 14 175, 30 205, 55 228 C 75 246, 85 265, 80 280 C 72 300, 48 285, 45 270" stroke="#141418" stroke-width="12" fill="none" stroke-linecap="round"/>
+                        <!-- Gold Highlights in Hair -->
+                        <path d="M 80 40 C 110 32, 128 55, 110 82 C 90 106, 60 120, 52 145 C 46 165, 62 188, 72 205" stroke="url(#goldGradHeader)" stroke-width="8" fill="none" stroke-linecap="round"/>
+                        <path d="M 100 50 C 122 45, 135 65, 122 88 C 105 112, 78 128, 70 152" stroke="url(#goldGradHeader)" stroke-width="5" fill="none" stroke-linecap="round"/>
+                        <path d="M 65 230 C 82 245, 88 262, 82 275" stroke="url(#goldGradHeader)" stroke-width="6" fill="none" stroke-linecap="round"/>
+                        
+                        <!-- Face Profile -->
+                        <path d="M 112 110 C 118 122, 128 130, 138 135 C 130 142, 122 148, 124 158 C 126 166, 134 170, 128 178 C 122 185, 110 188, 98 198" stroke="#141418" stroke-width="3" fill="none" stroke-linecap="round"/>
+                        <!-- Eye & Lips -->
+                        <path d="M 118 132 C 122 130, 128 132, 130 136" stroke="#141418" stroke-width="4" fill="none"/>
+                        <path d="M 126 130 L 129 126 M 122 131 L 123 126 M 128 133 L 132 131" stroke="#141418" stroke-width="2"/>
+                        <path d="M 126 162 C 132 162, 136 165, 132 170 C 128 174, 123 170, 126 162 Z" fill="#e11d48"/>
+                        
+                        <!-- Script Gold Text 'Sue B's' -->
+                        <text x="145" y="150" font-family="'Playfair Display', cursive, serif" font-size="110" font-style="italic" font-weight="700" fill="url(#goldGradHeader)" letter-spacing="-2">Sue B'</text>
+                        
+                        <!-- Gold Scissors replacing the 's' -->
+                        <g transform="translate(390, 80) rotate(18)">
+                            <circle cx="15" cy="15" r="14" stroke="url(#goldGradHeader)" stroke-width="6" fill="none"/>
+                            <circle cx="55" cy="15" r="14" stroke="url(#goldGradHeader)" stroke-width="6" fill="none"/>
+                            <path d="M 22 25 L 48 100" stroke="url(#goldGradHeader)" stroke-width="7" stroke-linecap="round"/>
+                            <path d="M 48 25 L 22 100" stroke="url(#goldGradHeader)" stroke-width="7" stroke-linecap="round"/>
+                            <circle cx="35" cy="62" r="4" fill="#141418"/>
+                        </g>
+
+                        <!-- Secondary Text 'HAIR BOUTIQUE, LLC' -->
+                        <text x="95" y="235" font-family="'Playfair Display', serif" font-size="34" font-weight="700" fill="#141418" letter-spacing="4">HAIR BOUTIQUE, LLC</text>
+                        
+                        <!-- Decorative Divider Bar & Floral Emblem -->
+                        <line x1="80" y1="262" x2="220" y2="262" stroke="url(#goldGradHeader)" stroke-width="2"/>
+                        <!-- Center Lotus Emblem -->
+                        <path d="M 250 250 C 242 260, 240 270, 250 272 C 260 270, 258 260, 250 250 Z" fill="url(#goldGradHeader)"/>
+                        <path d="M 245 258 C 235 260, 230 268, 238 273 C 246 272, 248 265, 245 258 Z" fill="url(#goldGradHeader)"/>
+                        <path d="M 255 258 C 265 260, 270 268, 262 273 C 254 272, 252 265, 255 258 Z" fill="url(#goldGradHeader)"/>
+                        <line x1="280" y1="262" x2="420" y2="262" stroke="url(#goldGradHeader)" stroke-width="2"/>
+                    </svg>
+                </a>
+
+                <!-- Navigation Links - Desktop -->
+                <nav class="hidden lg:flex items-center space-x-8 font-medium text-sm text-charcoal-800">
+                    <a href="#home" class="hover:text-gold-600 transition-colors py-1 border-b-2 border-transparent hover:border-gold-600">Home</a>
+                    <a href="#about" class="hover:text-gold-600 transition-colors py-1 border-b-2 border-transparent hover:border-gold-600">About</a>
+                    <a href="#services" class="hover:text-gold-600 transition-colors py-1 border-b-2 border-transparent hover:border-gold-600">Services</a>
+                    <a href="#gallery" class="hover:text-gold-600 transition-colors py-1 border-b-2 border-transparent hover:border-gold-600">Gallery</a>
+                    <a href="#reviews" class="hover:text-gold-600 transition-colors py-1 border-b-2 border-transparent hover:border-gold-600">Reviews</a>
+                    <a href="#contact" class="hover:text-gold-600 transition-colors py-1 border-b-2 border-transparent hover:border-gold-600">Contact</a>
+                </nav>
+
+                <!-- Desktop CTA & Phone -->
+                <div class="hidden lg:flex items-center space-x-4">
+                    <a href="tel:4122983405" class="text-charcoal-800 font-semibold text-sm hover:text-gold-600 transition-colors flex items-center gap-2">
+                        <i class="fa-solid fa-phone text-gold-600"></i>
+                        <span>412-298-3405</span>
+                    </a>
+                    <button onclick="openBookingModal()" class="gold-gradient-bg text-charcoal-900 font-semibold text-sm px-5 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5">
+                        Book Appointment
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-md text-charcoal-800 hover:text-gold-600 focus:outline-none" aria-label="Toggle menu">
+                    <i class="fa-solid fa-bars text-2xl" id="menu-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-nude-200 px-4 pt-2 pb-6 space-y-3">
+            <a href="#home" onclick="toggleMobileMenu()" class="block py-2 text-base font-medium text-charcoal-800 border-b border-gray-100">Home</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="block py-2 text-base font-medium text-charcoal-800 border-b border-gray-100">About</a>
+            <a href="#services" onclick="toggleMobileMenu()" class="block py-2 text-base font-medium text-charcoal-800 border-b border-gray-100">Services</a>
+            <a href="#gallery" onclick="toggleMobileMenu()" class="block py-2 text-base font-medium text-charcoal-800 border-b border-gray-100">Gallery</a>
+            <a href="#reviews" onclick="toggleMobileMenu()" class="block py-2 text-base font-medium text-charcoal-800 border-b border-gray-100">Reviews</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block py-2 text-base font-medium text-charcoal-800 border-b border-gray-100">Contact</a>
+            <div class="pt-2 flex flex-col gap-3">
+                <a href="tel:4122983405" class="flex items-center justify-center gap-2 border border-charcoal-800 text-charcoal-800 font-semibold py-2.5 rounded-full">
+                    <i class="fa-solid fa-phone text-gold-600"></i> Call 412-298-3405
+                </a>
+                <button onclick="toggleMobileMenu(); openBookingModal()" class="gold-gradient-bg text-charcoal-900 font-semibold py-2.5 rounded-full text-center shadow-md">
+                    Book Appointment
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="relative bg-charcoal-900 text-white min-h-[85vh] flex items-center overflow-hidden">
+        <!-- Hero Background Image with Gradient Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1920&q=80" alt="Luxury Hair Salon Interior" class="w-full h-full object-cover object-center opacity-30 transform scale-105 transition-transform duration-10000" id="hero-img">
+            <div class="absolute inset-0 bg-gradient-to-r from-charcoal-900 via-charcoal-900/90 to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                <!-- Badge -->
+                <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-gold-600/40 text-gold-300 px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium">
+                    <i class="fa-solid fa-star text-gold-400"></i> Crescent, PA's Premier Hair Studio & Beauty Boutique
+                </div>
+                <!-- Main Headline -->
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold tracking-tight text-white leading-tight">
+                    Beautiful Hair. <br/>
+                    <span class="gold-gradient-text">Confident You.</span>
+                </h1>
+                <!-- Subheadline -->
+                <p class="text-lg sm:text-xl text-gray-300 max-w-2xl font-light leading-relaxed">
+                    Professional hair care, dimensional color, Brazilian Blowouts, and full-family styling tailored individually for you in a cozy, upscale salon environment.
+                </p>
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                    <button onclick="openBookingModal()" class="w-full sm:w-auto gold-gradient-bg text-charcoal-900 font-bold px-8 py-4 rounded-full text-base shadow-lg hover:shadow-gold-600/20 hover:scale-105 transition-all flex items-center justify-center gap-2">
+                        <i class="fa-regular fa-calendar-check text-lg"></i>
+                        <span>Book an Appointment</span>
+                    </button>
+                    <a href="tel:4122983405" class="w-full sm:w-auto border-2 border-white/30 hover:border-gold-400 bg-white/5 hover:bg-white/10 text-white font-semibold px-8 py-4 rounded-full text-base backdrop-blur-sm transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-phone text-gold-400"></i>
+                        <span>Call Sue — 412-298-3405</span>
+                    </a>
+                </div>
+
+                <!-- Floating Highlights Badges -->
+                <div class="grid grid-cols-3 gap-4 pt-8 max-w-lg mx-auto lg:mx-0 border-t border-white/10 text-xs sm:text-sm">
+                    <div class="text-center lg:text-left">
+                        <p class="text-gold-400 font-serif font-bold text-xl sm:text-2xl">5.0 ★</p>
+                        <p class="text-gray-400">Top Rated Salon</p>
+                    </div>
+                    <div class="text-center lg:text-left">
+                        <p class="text-gold-400 font-serif font-bold text-xl sm:text-2xl">20+ Yrs</p>
+                        <p class="text-gray-400">Master Experience</p>
+                    </div>
+                    <div class="text-center lg:text-left">
+                        <p class="text-gold-400 font-serif font-bold text-xl sm:text-2xl">100%</p>
+                        <p class="text-gray-400">Personalized Care</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Feature Image Card -->
+            <div class="lg:col-span-5 hidden lg:block">
+                <div class="relative mx-auto max-w-md">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-gold-600 to-amber-200 rounded-2xl blur-lg opacity-40"></div>
+                    <div class="relative bg-charcoal-800 rounded-2xl overflow-hidden border border-gold-600/30 shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80" alt="Beautiful Hair Styling Result" class="w-full h-[450px] object-cover">
+                        <div class="p-6 bg-gradient-to-t from-charcoal-900 to-transparent absolute bottom-0 inset-x-0">
+                            <span class="text-xs uppercase tracking-widest text-gold-400 font-semibold">Specialized Expertise</span>
+                            <h3 class="text-xl font-serif font-bold text-white mt-1">Master Balayage & Brazilian Blowout Specialist</h3>
+                            <p class="text-xs text-gray-300 mt-2">Transforming locks with precision cuts, deep conditioning, and custom tones.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 bg-nude-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-6">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=800&q=80" alt="Sue Styling Hair in Salon" class="rounded-2xl shadow-xl w-full h-[420px] object-cover">
+                        <div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-xl shadow-lg border border-nude-200 hidden sm:block max-w-xs">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-full gold-gradient-bg flex items-center justify-center text-charcoal-900 font-bold text-xl">
+                                    <i class="fa-solid fa-heart"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-charcoal-800 text-sm">Family Owned Studio</h4>
+                                    <p class="text-xs text-gray-500">Welcoming women, men & children in Crescent, PA</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6 space-y-6">
+                    <span class="text-gold-600 font-semibold text-sm uppercase tracking-widest">About Sue B's Hair Boutique</span>
+                    <h2 class="text-3xl sm:text-4xl font-serif font-bold text-charcoal-800 leading-tight">
+                        Dedicated to Making You Look & Feel Extraordinary
+                    </h2>
+                    <p class="text-gray-600 leading-relaxed">
+                        At <strong>Sue B's Hair Boutique, LLC</strong>, styling hair is more than a routine—it's an art form tailored to your unique lifestyle, personality, and hair texture. Located conveniently in Crescent, PA, Sue offers a warm, personal atmosphere where every client receives undivided focus and top-tier expertise.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed">
+                        Whether you are coming in for a vivid color overhaul, a smoothing Brazilian Blowout, precise texturizing, or a haircut for the entire family, Sue utilizes premium salon-grade formulas to maintain the ultimate shine, strength, and health of your hair.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-4 pt-4 border-t border-nude-300">
+                        <div>
+                            <h4 class="font-serif text-2xl font-bold text-charcoal-800">Customized Care</h4>
+                            <p class="text-xs text-gray-500 mt-1">1-on-1 consultations before every major service</p>
+                        </div>
+                        <div>
+                            <h4 class="font-serif text-2xl font-bold text-charcoal-800">Premium Products</h4>
+                            <p class="text-xs text-gray-500 mt-1">Nourishing formulas for vibrant, long-lasting color</p>
+                        </div>
+                    </div>
+
+                    <div class="pt-2">
+                        <button onclick="openBookingModal()" class="bg-charcoal-800 hover:bg-charcoal-900 text-white font-semibold px-6 py-3 rounded-full text-sm transition-all shadow-md">
+                            Schedule Your Visit With Sue
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-gold-600 font-semibold text-sm uppercase tracking-widest">Boutique Services</span>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-charcoal-800 mt-2">Signature Hair Care & Beauty</h2>
+                <p class="text-gray-600 mt-4 text-base">From full transformations to quick touch-ups, explore our complete list of tailored hair styling and beauty care services.</p>
+            </div>
+
+            <!-- Service Grid Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-[#fdfbfb] rounded-2xl overflow-hidden border border-nude-200 shadow-sm hover:shadow-md transition-all group flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=600&q=80" alt="Balayage & Hair Color" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-3 right-3 bg-white/90 backdrop-blur-md text-charcoal-800 text-xs font-bold px-3 py-1 rounded-full">Popular</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-serif font-bold text-xl text-charcoal-800">Balayage & Custom Color</h3>
+                            <p class="text-gray-600 text-xs sm:text-sm mt-2 leading-relaxed">Hand-painted balayage, full foil highlights, root retouches, gloss & toner for rich, dimensional tone.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 flex items-center justify-between border-t border-nude-200/50 mt-4">
+                        <span class="text-xs font-semibold text-gold-600">Custom Quote</span>
+                        <button onclick="openBookingModal('Balayage & Custom Color')" class="text-xs font-bold text-charcoal-800 hover:text-gold-600 flex items-center gap-1">
+                            Book Service <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-[#fdfbfb] rounded-2xl overflow-hidden border border-nude-200 shadow-sm hover:shadow-md transition-all group flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=600&q=80" alt="Brazilian Blowout" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-serif font-bold text-xl text-charcoal-800">Brazilian Blowouts</h3>
+                            <p class="text-gray-600 text-xs sm:text-sm mt-2 leading-relaxed">Smoothing treatment that eliminates frizz, enhances natural shine, and cuts daily blow-drying time in half.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 flex items-center justify-between border-t border-nude-200/50 mt-4">
+                        <span class="text-xs font-semibold text-gold-600">Smoothing Care</span>
+                        <button onclick="openBookingModal('Brazilian Blowouts')" class="text-xs font-bold text-charcoal-800 hover:text-gold-600 flex items-center gap-1">
+                            Book Service <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-[#fdfbfb] rounded-2xl overflow-hidden border border-nude-200 shadow-sm hover:shadow-md transition-all group flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1620331311520-246422fd82f9?auto=format&fit=crop&w=600&q=80" alt="Family Haircuts & Styling" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-serif font-bold text-xl text-charcoal-800">Family Haircuts</h3>
+                            <p class="text-gray-600 text-xs sm:text-sm mt-2 leading-relaxed">Precision haircuts, layer trims, and styling for women, men, and kids in a welcoming, comfortable environment.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 flex items-center justify-between border-t border-nude-200/50 mt-4">
+                        <span class="text-xs font-semibold text-gold-600">Women / Men / Kids</span>
+                        <button onclick="openBookingModal('Family Haircuts')" class="text-xs font-bold text-charcoal-800 hover:text-gold-600 flex items-center gap-1">
+                            Book Service <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="bg-[#fdfbfb] rounded-2xl overflow-hidden border border-nude-200 shadow-sm hover:shadow-md transition-all group flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=600&q=80" alt="Formal Updos & Styling" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-serif font-bold text-xl text-charcoal-800">Formal Styling & Updos</h3>
+                            <p class="text-gray-600 text-xs sm:text-sm mt-2 leading-relaxed">Elegant hairstyles for weddings, proms, galas, and special events crafted to hold effortlessly all day.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 flex items-center justify-between border-t border-nude-200/50 mt-4">
+                        <span class="text-xs font-semibold text-gold-600">Events & Bridal</span>
+                        <button onclick="openBookingModal('Formal Styling & Updos')" class="text-xs font-bold text-charcoal-800 hover:text-gold-600 flex items-center gap-1">
+                            Book Service <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Service List Box -->
+            <div class="mt-12 bg-nude-100 rounded-2xl p-8 border border-nude-200">
+                <h3 class="font-serif font-bold text-2xl text-charcoal-800 text-center mb-6">Additional Boutique Services</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-gold-100 text-gold-600 flex items-center justify-center shrink-0 font-bold">
+                            <i class="fa-solid fa-scissors"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-charcoal-800">Perms & Texturizing</h4>
+                            <p class="text-xs text-gray-600 mt-1">Modern wave perms, beach curls, and volume texturizing for long-lasting body.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-gold-100 text-gold-600 flex items-center justify-center shrink-0 font-bold">
+                            <i class="fa-solid fa-[#d4af37] fa-sparkles"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-charcoal-800">Deep Conditioning Treatments</h4>
+                            <p class="text-xs text-gray-600 mt-1">Restorative mask therapies to revive dry, damaged, or color-treated hair.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-gold-100 text-gold-600 flex items-center justify-center shrink-0 font-bold">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-charcoal-800">Facial Waxing & Beauty</h4>
+                            <p class="text-xs text-gray-600 mt-1">Eyebrow shaping, lip, and chin waxing for clean, smooth results.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="py-20 bg-charcoal-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-gold-400 font-semibold text-sm uppercase tracking-widest">Our Work</span>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold mt-2">Hair Gallery & Transformations</h2>
+                <p class="text-gray-400 mt-3 text-sm">See recent hair coloring, cuts, and styles created at Sue B's Hair Boutique.</p>
+
+                <!-- Filter Category Buttons -->
+                <div class="flex flex-wrap items-center justify-center gap-2 mt-8">
+                    <button onclick="filterGallery('all')" class="gallery-filter-btn active bg-gold-600 text-charcoal-900 text-xs font-semibold px-4 py-2 rounded-full transition-all" data-category="all">All Styles</button>
+                    <button onclick="filterGallery('color')" class="gallery-filter-btn bg-charcoal-800 hover:bg-gold-600/20 text-gray-300 text-xs font-semibold px-4 py-2 rounded-full transition-all" data-category="color">Color & Balayage</button>
+                    <button onclick="filterGallery('cuts')" class="gallery-filter-btn bg-charcoal-800 hover:bg-gold-600/20 text-gray-300 text-xs font-semibold px-4 py-2 rounded-full transition-all" data-category="cuts">Cuts & Blowouts</button>
+                    <button onclick="filterGallery('updos')" class="gallery-filter-btn bg-charcoal-800 hover:bg-gold-600/20 text-gray-300 text-xs font-semibold px-4 py-2 rounded-full transition-all" data-category="updos">Updos & Formal</button>
+                </div>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-grid">
+                <!-- Gallery Item 1 -->
+                <div class="gallery-item color relative rounded-xl overflow-hidden group cursor-pointer h-80" onclick="openLightbox('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1200&q=80', 'Golden Blonde Dimensional Balayage')">
+                    <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80" alt="Dimensional Balayage" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal-900/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-end">
+                        <span class="text-gold-400 text-xs font-semibold">Color & Balayage</span>
+                        <h4 class="font-serif text-lg font-bold">Golden Blonde Dimensional Balayage</h4>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 2 -->
+                <div class="gallery-item cuts relative rounded-xl overflow-hidden group cursor-pointer h-80" onclick="openLightbox('https://images.unsplash.com/photo-1560869713-7d0a29430803?auto=format&fit=crop&w=1200&q=80', 'Brazilian Blowout & Precision Cut')">
+                    <img src="https://images.unsplash.com/photo-1560869713-7d0a29430803?auto=format&fit=crop&w=800&q=80" alt="Brazilian Blowout Hair" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal-900/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-end">
+                        <span class="text-gold-400 text-xs font-semibold">Cuts & Blowouts</span>
+                        <h4 class="font-serif text-lg font-bold">Silky Brazilian Blowout Finish</h4>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 3 -->
+                <div class="gallery-item updos relative rounded-xl overflow-hidden group cursor-pointer h-80" onclick="openLightbox('https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=1200&q=80', 'Elegant Bridal Updo Design')">
+                    <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=800&q=80" alt="Bridal Updo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal-900/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-end">
+                        <span class="text-gold-400 text-xs font-semibold">Updos & Formal</span>
+                        <h4 class="font-serif text-lg font-bold">Romantic Evening Updo</h4>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 4 -->
+                <div class="gallery-item color relative rounded-xl overflow-hidden group cursor-pointer h-80" onclick="openLightbox('https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1200&q=80', 'Rich Brunette Gloss & Highlights')">
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80" alt="Brunette Highlights" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal-900/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-end">
+                        <span class="text-gold-400 text-xs font-semibold">Color & Balayage</span>
+                        <h4 class="font-serif text-lg font-bold">Rich Brunette Honey Gloss</h4>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 5 -->
+                <div class="gallery-item cuts relative rounded-xl overflow-hidden group cursor-pointer h-80" onclick="openLightbox('https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=1200&q=80', 'Layered Bob & Soft Waves')">
+                    <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=800&q=80" alt="Layered Haircut" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal-900/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-end">
+                        <span class="text-gold-400 text-xs font-semibold">Cuts & Blowouts</span>
+                        <h4 class="font-serif text-lg font-bold">Textured Layered Bob & Waves</h4>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 6 -->
+                <div class="gallery-item color relative rounded-xl overflow-hidden group cursor-pointer h-80" onclick="openLightbox('https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=1200&q=80', 'Vivid Red Auburn Color Refresh')">
+                    <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=800&q=80" alt="Auburn Red Hair Color" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal-900/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-end">
+                        <span class="text-gold-400 text-xs font-semibold">Color & Balayage</span>
+                        <h4 class="font-serif text-lg font-bold">Vivid Warm Copper Red Tone</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews" class="py-20 bg-nude-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-gold-600 font-semibold text-sm uppercase tracking-widest">Client Testimonials</span>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-charcoal-800 mt-2">Loved by Our Crescent Community</h2>
+                <div class="flex items-center justify-center gap-1 text-gold-500 mt-3 text-lg">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <span class="text-charcoal-800 font-bold text-sm ml-2">5.0 Overall Rating</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Review Card 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-nude-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-1 text-gold-500 mb-4 text-sm">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-600 text-sm italic leading-relaxed">
+                            "Sue is hands down the best hair stylist in the area! I was nervous about getting a Brazilian Blowout for the first time, but she explained every step. My hair is so smooth and manageable now!"
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-nude-100 flex items-center justify-between">
+                        <div>
+                            <h4 class="font-bold text-charcoal-800 text-sm">Michelle R.</h4>
+                            <p class="text-xs text-gray-400">Crescent, PA</p>
+                        </div>
+                        <span class="text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-semibold">Verified Client</span>
+                    </div>
+                </div>
+
+                <!-- Review Card 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-nude-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-1 text-gold-500 mb-4 text-sm">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-600 text-sm italic leading-relaxed">
+                            "Sue does my hair and both of my kids' hair. She's so patient, friendly, and her color skills are exceptional. My blonde highlights always look natural and bright without damage."
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-nude-100 flex items-center justify-between">
+                        <div>
+                            <h4 class="font-bold text-charcoal-800 text-sm">Amanda K.</h4>
+                            <p class="text-xs text-gray-400">Crescent, PA</p>
+                        </div>
+                        <span class="text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-semibold">Verified Client</span>
+                    </div>
+                </div>
+
+                <!-- Review Card 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-nude-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-1 text-gold-500 mb-4 text-sm">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-600 text-sm italic leading-relaxed">
+                            "Sue saved my hair after a bad home dye job! Her salon is clean, peaceful, and super cozy. I wouldn't trust anyone else with my hair!"
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-nude-100 flex items-center justify-between">
+                        <div>
+                            <h4 class="font-bold text-charcoal-800 text-sm">Jessica M.</h4>
+                            <p class="text-xs text-gray-400">Moon Township, PA</p>
+                        </div>
+                        <span class="text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-semibold">Verified Client</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <!-- Location Details & Hours -->
+                <div class="lg:col-span-5 space-y-8">
+                    <div>
+                        <span class="text-gold-600 font-semibold text-sm uppercase tracking-widest">Visit Sue B's</span>
+                        <h2 class="text-3xl font-serif font-bold text-charcoal-800 mt-2">Location & Contact</h2>
+                        <p class="text-gray-600 text-sm mt-2">Located easily on Crescent Blvd Ext with convenient parking.</p>
+                    </div>
+
+                    <!-- Open/Closed Status Widget -->
+                    <div id="status-widget" class="p-4 rounded-xl border flex items-center justify-between bg-emerald-50 border-emerald-200 text-emerald-800">
+                        <div class="flex items-center gap-3">
+                            <span class="relative flex h-3 w-3">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                            </span>
+                            <span class="text-sm font-semibold" id="status-text">Salon Status: Check Hours Below</span>
+                        </div>
+                        <span class="text-xs font-mono font-bold" id="current-day-badge">PA Local Time</span>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-nude-100">
+                            <div class="w-10 h-10 rounded-full bg-gold-600 text-charcoal-900 flex items-center justify-center shrink-0 font-bold">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-charcoal-800 text-sm">Salon Address</h4>
+                                <p class="text-sm text-gray-600 mt-0.5">466 Crescent Blvd Ext, Crescent, PA 15046</p>
+                                <a href="https://maps.google.com/?q=466+Crescent+Blvd+Ext,+Crescent,+PA+15046" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-gold-600 hover:underline mt-1 inline-block">
+                                    Get Driving Directions &rarr;
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-nude-100">
+                            <div class="w-10 h-10 rounded-full bg-gold-600 text-charcoal-900 flex items-center justify-center shrink-0 font-bold">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-charcoal-800 text-sm">Direct Phone</h4>
+                                <p class="text-sm text-gray-600 mt-0.5"><a href="tel:4122983405" class="hover:text-gold-600 font-semibold">412-298-3405</a></p>
+                                <p class="text-xs text-gray-500 mt-0.5">Call or text for questions & appointments</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-nude-100">
+                            <div class="w-10 h-10 rounded-full bg-gold-600 text-charcoal-900 flex items-center justify-center shrink-0 font-bold">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-charcoal-800 text-sm">Email Address</h4>
+                                <p class="text-sm text-gray-600 mt-0.5"><a href="mailto:suebhairboutique@yahoo.com" class="hover:text-gold-600">suebhairboutique@yahoo.com</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Operating Hours Table -->
+                    <div class="bg-charcoal-900 text-white p-6 rounded-2xl">
+                        <h4 class="font-serif font-bold text-lg text-gold-400 mb-4 flex items-center gap-2">
+                            <i class="fa-regular fa-clock"></i> Hours of Operation
+                        </h4>
+                        <div class="space-y-2 text-xs sm:text-sm">
+                            <div class="flex justify-between py-1 border-b border-gray-800">
+                                <span class="text-gray-400">Monday - Saturday</span>
+                                <span class="font-medium text-white">By Appointment Only</span>
+                            </div>
+                            <div class="flex justify-between py-1 border-b border-gray-800">
+                                <span class="text-gray-400">Flexible Scheduling</span>
+                                <span class="font-medium text-gold-400">Mornings & Evenings</span>
+                            </div>
+                            <div class="flex justify-between py-1">
+                                <span class="text-gray-400">Sunday</span>
+                                <span class="font-medium text-gray-500">Closed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Quick Inquiry Form & Map Visual -->
+                <div class="lg:col-span-7 flex flex-col justify-between bg-nude-100 rounded-3xl p-8 border border-nude-200 shadow-sm">
+                    <div>
+                        <h3 class="font-serif font-bold text-2xl text-charcoal-800">Send Sue a Direct Message</h3>
+                        <p class="text-xs text-gray-500 mt-1 mb-6">Have a question about color services or scheduling? Leave a message below.</p>
+
+                        <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-charcoal-800 uppercase mb-1">Your Name *</label>
+                                    <input type="text" required class="w-full px-4 py-3 rounded-xl border border-nude-300 focus:outline-none focus:ring-2 focus:ring-gold-600 text-sm" placeholder="e.g. Sarah Jenkins">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-charcoal-800 uppercase mb-1">Phone Number *</label>
+                                    <input type="tel" required class="w-full px-4 py-3 rounded-xl border border-nude-300 focus:outline-none focus:ring-2 focus:ring-gold-600 text-sm" placeholder="e.g. 412-555-0199">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-charcoal-800 uppercase mb-1">Email Address</label>
+                                <input type="email" class="w-full px-4 py-3 rounded-xl border border-nude-300 focus:outline-none focus:ring-2 focus:ring-gold-600 text-sm" placeholder="e.g. sarah@example.com">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-charcoal-800 uppercase mb-1">How Can Sue Help You? *</label>
+                                <textarea rows="4" required class="w-full px-4 py-3 rounded-xl border border-nude-300 focus:outline-none focus:ring-2 focus:ring-gold-600 text-sm" placeholder="Tell Sue about your hair goals or requested service..."></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-charcoal-900 hover:bg-black text-white font-bold py-3.5 rounded-xl text-sm transition-all">
+                                Send Message to Sue
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Map Visual Placeholder Container -->
+                    <div class="mt-8 rounded-2xl overflow-hidden relative h-48 border border-nude-300 bg-gray-200 shadow-inner">
+                        <iframe title="Sue B's Hair Boutique Location Map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3032.541289123!2d-80.245!3d40.556!2m3!1f0!1f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88345c2020202020%3A0x0!2s466+Crescent+Blvd+Ext%2C+Crescent%2C+PA+15046!5e0!3m2!1sen!2sus!4v1600000000000" class="w-full h-full border-0" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointment Booking Modal Overlay -->
+    <div id="booking-modal" class="fixed inset-0 z-50 hidden bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl border border-gold-600/30 transform transition-all my-8">
+            <button onclick="closeBookingModal()" class="absolute top-5 right-5 text-gray-400 hover:text-charcoal-900 text-2xl font-bold w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100" aria-label="Close modal">&times;</button>
+            
+            <div class="text-center mb-6">
+                <span class="text-xs uppercase tracking-widest text-gold-600 font-bold">Sue B's Hair Boutique</span>
+                <h3 class="text-2xl font-serif font-bold text-charcoal-800 mt-1">Request an Appointment</h3>
+                <p class="text-xs text-gray-500 mt-1">Select your desired date, time, and service. Sue will follow up directly to confirm.</p>
+            </div>
+
+            <form id="modal-booking-form" onsubmit="handleBookingSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-charcoal-800 uppercase mb-1">Full Name *</label>
+                    <input type="text" id="booking-name" required class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gold-600 text-sm" placeholder="e.g. Jennifer Smith">
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-charcoal-800 uppercase mb-1">Phone Number *</label>
+                        <input type="tel" id="booking-phone" required class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gold-600 text-sm" placeholder="412-xxx-xxxx">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-charcoal-800 uppercase mb-1">Email Address</label>
+                        <input type="email" id="booking-email" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gold-600 text-sm" placeholder="jennifer@example.com">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-charcoal-800 uppercase mb-1">Select Service *</label>
+                    <select id="booking-service" required class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gold-600 text-sm bg-white">
+                        <option value="">-- Choose Hair Service --</option>
+                        <option value="Balayage & Custom Color">Balayage & Custom Color</option>
+                        <option value="Brazilian Blowout">Brazilian Blowout</option>
+                        <option value="Full Highlights / Lowlights">Full Highlights / Lowlights</option>
+                        <option value="Women's Haircut & Blowout">Women's Haircut & Blowout</option>
+                        <option value="Men's Haircut">Men's Haircut</option>
+                        <option value="Children's Haircut">Children's Haircut</option>
+                        <option value="Formal Updo / Bridal Hair">Formal Updo / Bridal Hair</option>
+                        <option value="Perm / Texturizing">Perm / Texturizing</option>
+                        <option value="Facial Waxing & Beauty">Facial Waxing & Beauty</option>
+                    </select>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-charcoal-800 uppercase mb-1">Preferred Date *</label>
+                        <input type="date" id="booking-date" required class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gold-600 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-charcoal-800 uppercase mb-1">Preferred Time *</label>
+                        <select id="booking-time" required class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gold-600 text-sm bg-white">
+                            <option value="">-- Select Time Slot --</option>
+                            <option value="Morning (9:00 AM - 12:00 PM)">Morning (9:00 AM - 12:00 PM)</option>
+                            <option value="Early Afternoon (12:00 PM - 3:00 PM)">Early Afternoon (12:00 PM - 3:00 PM)</option>
+                            <option value="Late Afternoon (3:00 PM - 6:00 PM)">Late Afternoon (3:00 PM - 6:00 PM)</option>
+                            <option value="Evening (6:00 PM - 8:00 PM)">Evening (6:00 PM - 8:00 PM)</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-charcoal-800 uppercase mb-1">Notes / Current Hair Length</label>
+                    <textarea id="booking-notes" rows="2" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gold-600 text-sm" placeholder="Any specific hair goals, color history, or promo codes..."></textarea>
+                </div>
+
+                <button type="submit" class="w-full gold-gradient-bg text-charcoal-900 font-bold py-3.5 rounded-xl text-sm shadow-md hover:shadow-lg transition-all">
+                    Submit Appointment Request
+                </button>
+            </form>
+
+            <!-- Success Confirmation State -->
+            <div id="booking-success" class="hidden text-center py-8 space-y-4">
+                <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto text-3xl">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <h4 class="font-serif font-bold text-2xl text-charcoal-800">Request Received!</h4>
+                <p class="text-gray-600 text-sm max-w-xs mx-auto">Thank you! Sue will review your requested time and contact you shortly at your phone number to confirm.</p>
+                <button onclick="closeBookingModal()" class="bg-charcoal-800 text-white text-xs font-bold px-6 py-2.5 rounded-full mt-4">
+                    Back to Website
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox Modal for Gallery Images -->
+    <div id="lightbox-modal" class="fixed inset-0 z-50 hidden bg-black/90 flex items-center justify-center p-4" onclick="closeLightbox()">
+        <div class="relative max-w-4xl w-full text-center" onclick="event.stopPropagation()">
+            <button onclick="closeLightbox()" class="absolute -top-12 right-0 text-white text-3xl font-bold hover:text-gold-400">&times;</button>
+            <img id="lightbox-img" src="" alt="Gallery Preview" class="max-h-[80vh] mx-auto rounded-lg shadow-2xl object-contain">
+            <p id="lightbox-caption" class="text-white text-base font-serif font-semibold mt-4"></p>
+        </div>
+    </div>
+
+    <!-- Mobile Floating Sticky Action Bar (visible on mobile only) -->
+    <div class="fixed bottom-0 inset-x-0 bg-white/95 backdrop-blur-md border-t border-nude-200 p-3 z-30 lg:hidden flex items-center justify-between gap-3 shadow-lg">
+        <a href="tel:4122983405" class="flex-1 border border-charcoal-800 text-charcoal-800 font-bold py-2.5 rounded-full text-center text-xs flex items-center justify-center gap-1.5">
+            <i class="fa-solid fa-phone text-gold-600"></i> Call 412-298-3405
+        </a>
+        <button onclick="openBookingModal()" class="flex-1 gold-gradient-bg text-charcoal-900 font-bold py-2.5 rounded-full text-center text-xs shadow">
+            Book Appointment
+        </button>
+    </div>
+
+    <footer class="bg-charcoal-900 text-white py-16 border-t border-gold-600/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
+                <!-- Footer Brand & Logo -->
+                <div class="md:col-span-5 space-y-4">
+                    <a href="#" class="inline-block" aria-label="Sue B's Hair Boutique Footer Logo">
+                        <svg class="h-14 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity" viewBox="0 0 500 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="goldGradFooter" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#d4af37" />
+                                    <stop offset="50%" stop-color="#fef08a" />
+                                    <stop offset="100%" stop-color="#ca8a04" />
+                                </linearGradient>
+                            </defs>
+                            <path d="M 60 170 C 50 160, 40 145, 45 130 C 52 108, 75 95, 95 85 C 120 72, 140 50, 130 25 C 115 10, 85 10, 60 30 C 30 55, 10 95, 12 140 C 14 175, 30 205, 55 228 C 75 246, 85 265, 80 280 C 72 300, 48 285, 45 270" stroke="#ffffff" stroke-width="12" fill="none" stroke-linecap="round"/>
+                            <path d="M 80 40 C 110 32, 128 55, 110 82 C 90 106, 60 120, 52 145 C 46 165, 62 188, 72 205" stroke="url(#goldGradFooter)" stroke-width="8" fill="none" stroke-linecap="round"/>
+                            <text x="145" y="150" font-family="'Playfair Display', cursive, serif" font-size="110" font-style="italic" font-weight="700" fill="url(#goldGradFooter)">Sue B'</text>
+                            <g transform="translate(390, 80) rotate(18)">
+                                <circle cx="15" cy="15" r="14" stroke="url(#goldGradFooter)" stroke-width="6" fill="none"/>
+                                <circle cx="55" cy="15" r="14" stroke="url(#goldGradFooter)" stroke-width="6" fill="none"/>
+                                <path d="M 22 25 L 48 100" stroke="url(#goldGradFooter)" stroke-width="7" stroke-linecap="round"/>
+                                <path d="M 48 25 L 22 100" stroke="url(#goldGradFooter)" stroke-width="7" stroke-linecap="round"/>
+                                <circle cx="35" cy="62" r="4" fill="#ffffff"/>
+                            </g>
+                            <text x="95" y="235" font-family="'Playfair Display', serif" font-size="34" font-weight="700" fill="#ffffff" letter-spacing="4">HAIR BOUTIQUE, LLC</text>
+                            <line x1="80" y1="262" x2="420" y2="262" stroke="url(#goldGradFooter)" stroke-width="2"/>
+                        </svg>
+                    </a>
+                    <p class="text-gray-400 text-xs sm:text-sm max-w-sm leading-relaxed">
+                        Dedicated to exceptional hair cutting, custom color, smoothing treatments, and personalized beauty care in Crescent, PA.
+                    </p>
+                </div>
+
+                <!-- Footer Quick Links -->
+                <div class="md:col-span-3 space-y-3">
+                    <h4 class="font-serif font-bold text-gold-400 text-sm uppercase tracking-wider">Quick Navigation</h4>
+                    <ul class="space-y-2 text-xs text-gray-300">
+                        <li><a href="#home" class="hover:text-gold-400 transition-colors">Home</a></li>
+                        <li><a href="#about" class="hover:text-gold-400 transition-colors">About Sue</a></li>
+                        <li><a href="#services" class="hover:text-gold-400 transition-colors">Services & Pricing</a></li>
+                        <li><a href="#gallery" class="hover:text-gold-400 transition-colors">Hair Gallery</a></li>
+                        <li><a href="#reviews" class="hover:text-gold-400 transition-colors">Client Reviews</a></li>
+                        <li><a href="#contact" class="hover:text-gold-400 transition-colors">Contact & Hours</a></li>
+                    </ul>
+                </div>
+
+                <!-- Footer Contact info -->
+                <div class="md:col-span-4 space-y-3">
+                    <h4 class="font-serif font-bold text-gold-400 text-sm uppercase tracking-wider">Salon Contact</h4>
+                    <p class="text-xs text-gray-300"><i class="fa-solid fa-location-dot text-gold-400 mr-2"></i>466 Crescent Blvd Ext, Crescent, PA 15046</p>
+                    <p class="text-xs text-gray-300"><i class="fa-solid fa-phone text-gold-400 mr-2"></i><a href="tel:4122983405" class="hover:underline">412-298-3405</a></p>
+                    <p class="text-xs text-gray-300"><i class="fa-solid fa-envelope text-gold-400 mr-2"></i><a href="mailto:suebhairboutique@yahoo.com" class="hover:underline">suebhairboutique@yahoo.com</a></p>
+                    
+                    <div class="pt-2 flex items-center gap-3">
+                        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-charcoal-800 hover:bg-gold-600 text-white hover:text-charcoal-900 flex items-center justify-center transition-all" aria-label="Facebook Page">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500">
+                <p>&copy; <span id="copyright-year">2026</span> Sue B's Hair Boutique, LLC. All rights reserved.</p>
+                <p class="mt-2 sm:mt-0">Crescent, Pennsylvania • Professional Hair Care</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Set dynamic year
+        document.getElementById('copyright-year').textContent = new Date().getFullYear();
+
+        // Announcement Bar Toggle
+        function closeAnnouncement() {
+            const bar = document.getElementById('announcement-bar');
+            bar.style.display = 'none';
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                menu.classList.add('hidden');
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        }
+
+        // Booking Modal Management
+        function openBookingModal(preselectedService = '') {
+            const modal = document.getElementById('booking-modal');
+            const serviceSelect = document.getElementById('booking-service');
+            const form = document.getElementById('modal-booking-form');
+            const successState = document.getElementById('booking-success');
+
+            if (preselectedService && serviceSelect) {
+                for (let i = 0; i < serviceSelect.options.length; i++) {
+                    if (serviceSelect.options[i].value.toLowerCase().includes(preselectedService.toLowerCase())) {
+                        serviceSelect.selectedIndex = i;
+                        break;
+                    }
+                }
+            }
+
+            // Ensure min date is today
+            const dateInput = document.getElementById('booking-date');
+            if (dateInput) {
+                const today = new Date().toISOString().split('T')[0];
+                dateInput.setAttribute('min', today);
+            }
+
+            form.classList.remove('hidden');
+            successState.classList.add('hidden');
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBookingModal() {
+            const modal = document.getElementById('booking-modal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function handleBookingSubmit(event) {
+            event.preventDefault();
+            const form = document.getElementById('modal-booking-form');
+            const successState = document.getElementById('booking-success');
+            
+            // Show success screen
+            form.classList.add('hidden');
+            successState.classList.remove('hidden');
+            form.reset();
+        }
+
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            alert("Thank you for reaching out! Sue will get back to you shortly.");
+            event.target.reset();
+        }
+
+        // Gallery Filtering Logic
+        function filterGallery(category) {
+            const items = document.querySelectorAll('.gallery-item');
+            const buttons = document.querySelectorAll('.gallery-filter-btn');
+
+            buttons.forEach(btn => {
+                if (btn.getAttribute('data-category') === category) {
+                    btn.classList.add('bg-gold-600', 'text-charcoal-900');
+                    btn.classList.remove('bg-charcoal-800', 'text-gray-300');
+                } else {
+                    btn.classList.remove('bg-gold-600', 'text-charcoal-900');
+                    btn.classList.add('bg-charcoal-800', 'text-gray-300');
+                }
+            });
+
+            items.forEach(item => {
+                if (category === 'all' || item
